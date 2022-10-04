@@ -1,0 +1,71 @@
+/*
+ * Copyright (c) 2022 fauh45
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/bt.h>
+
+#define QWERTY      0
+#define PUNCTUATION 1
+#define FUNCTION    2
+#define NAV         3 
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        qwerty_layer {
+            label = "QWERTY";
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//           |    Q    |    W    |    E    |    R    |    T    |    Y    |    U    |    I    |    O    |    P    |
+//           |    A    |    S    |    D    |    F    |    G    |    H    |    J    |    K    |    L    |    ;    |
+// |    =    |    Z    |    X    |    C    |    V    |    B    |    N    |    M    |    ,    |    .    |    /    |
+// |    -    |   CTRL  |   GUI   |  L ALT  |  SHIFT  |   BSPC  |  SPACE  |  RETURN |   APP   |   DEL   | ESCAPE  |
+            bindings = <
+                &kp Q       &kp W       &kp E       &kp R       &kp T               &kp Y                   &kp U     &kp I             &kp O       &kp P
+                &kp A       &kp S       &kp D       &kp F       &kp G               &kp H                   &kp J     &kp K             &kp L       &lt NAV SEMI
+    &kp EQUAL   &kp Z       &kp X       &kp C       &kp V       &kp B               &kp N                   &kp M     &kp COMMA         &kp DOT     &kp FSLH
+    &kp MINUS   &kp LCTRL   &kp LGUI    &kp LALT    &kp LSHIFT  &lt FUNCTION BSPC   &lt PUNCTUATION SPACE   &kp ENTER &kp K_APPLICATION &kp DELETE  &kp ESCAPE
+            >;
+        };
+
+        punctuation_layer {
+            label = "PUNCTUATION";
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//           |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    9    |    9    |    0    |
+//           |   TAB   |    NO   |    NO   |    `    |    [    |    ]    |    \    |    ;    |    '    |    '    |
+// |  CTRL+V |    NO   |    NO   |    NO   |    NO   |    =    |    -    |    NO   |  TRANS  |  TRANS  |  TRANS  |
+// |  CTRL+C |  TRANS  |  TRANS  |  TRANS  |  TRANS  |  TRANS  |   NO    |   TRANS |  TRANS  |  TRANS  |  TRANS  |
+            bindings = <
+                &kp 1       &kp 2       &kp 3       &kp 4       &kp 5      &kp 6     &kp 7      &kp 8     &kp 9      &kp 0
+                &kp TAB     &none       &none       &kp GRAV    &kp LBKT   &kp RBKT  &kp BSLH   &kp SEMI  &kp QUOT   &kp MINUS
+    &kp LC(V)   &none       &none       &none       &none       &kp EQUAL  &kp MINUS &none      &trans    &trans     &trans
+    &kp LC(C)   &trans      &trans      &trans      &trans      &trans     &none     &trans     &trans    &trans     &trans
+            >;
+        };
+
+        function_layer {
+            label = "FUNCTION";
+            bindings = <
+                &kp F1      &kp F2      &kp F3      &kp F4      &kp F5     &kp F6    &kp F7     &kp F8          &kp F9        &kp F10
+                &kp TAB     &kp F11     &kp F12     &none       &none      &none     &none      &kp C_RW        &kp C_PAUSE   &kp C_FF
+    &kp PG_UP   &kp CAPS    &kp PSCRN   &kp SLCK    &kp PAUS    &none      &kp LNLCK &none      &kp C_VOL_DN    &kp C_VOL_UP  &kp C_MUTE
+    &kp PG_DN   &trans      &trans      &trans      &trans      &none      &none     &none      &none           &none         &none
+            >;
+        };
+
+        nav_layer {
+            label = "NAV";
+            bindings = <
+                    &kp ESC     &bt BT_SEL 0    &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3     &kp INS    &kp PG_UP     &kp UP          &kp PG_DN     &kp DEL
+                    &kp TAB     &bt BT_CLR      &bt BT_SEL 4      &none             &none            &kp HOME   &kp LEFT      &kp DOWN        &kp RIGHT     &none
+    &out OUT_TOG    &none       &none           &none             &none             &none            &kp END    &none         &none           &none         &none
+    &reset          &trans      &trans          &trans            &trans            &kp BSPC         &none      &none         &none           &none         &none
+            >;
+        };
+    };
+};

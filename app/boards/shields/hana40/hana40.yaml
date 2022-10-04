@@ -1,0 +1,13 @@
+identifier: hana40
+name: Hana40
+type: keyboard
+arch: arm
+toolchain:
+  - zephyr
+supported:
+  - adc
+  - usb_device
+  - ble
+  - ieee802154
+  - pwm
+  - watchdog
