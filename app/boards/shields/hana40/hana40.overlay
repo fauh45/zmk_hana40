@@ -71,9 +71,9 @@
 			;
 		row-gpios
 			= <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row0
-			, <&shift_reg 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row1
-			, <&shift_reg 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row2	
-			, <&shift_reg 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row3
+			, <&shift_reg 0 (GPIO_ACTIVE_HIGH)> // Row1
+			, <&shift_reg 2 (GPIO_ACTIVE_HIGH)> // Row2	
+			, <&shift_reg 1 (GPIO_ACTIVE_HIGH)> // Row3
 			;
 	};
 };
